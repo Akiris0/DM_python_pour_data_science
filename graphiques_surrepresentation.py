@@ -1,5 +1,6 @@
 from matplotlib import pyplot as plt
 
+
 def plot_surrepresentation(candidat, score_departements, n=5):
     """
     Affiche un graphique des principales surreprésentations
@@ -37,11 +38,11 @@ def plot_surrepresentation(candidat, score_departements, n=5):
     plt.tight_layout()
     plt.show()
 
+
 def plot_carte_surrepresentation(candidat, score_departements, departement_borders):
     """
     Affiche une carte choroplèthe de la surreprésentation par département
     pour un candidat donné.
-    
     Paramètres:
         candidat (str): Nom exact du candidat
         score_departements (DataFrame): DataFrame avec les colonnes
@@ -55,7 +56,7 @@ def plot_carte_surrepresentation(candidat, score_departements, departement_borde
 
     carte = departement_borders.merge(
         df_candidat[['code_departement', 'surrepresentation']],
-        left_on='INSEE_DEP', 
+        left_on='INSEE_DEP',
         right_on='code_departement',
         how='left'
     )
@@ -66,7 +67,7 @@ def plot_carte_surrepresentation(candidat, score_departements, departement_borde
 
     carte.plot(
         column='surrepresentation',
-        cmap='RdBu_r',       
+        cmap='RdBu_r',
         legend=True,
         legend_kwds={'label': '(% par rapport\nmoyenne nationale)'},
         ax=ax,
